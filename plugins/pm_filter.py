@@ -25,7 +25,7 @@ CAP = {}
 async def pm_search(client, message):
     if str(message.text).startswith('/'):
         return 
-     grp_link, is_private_message = await db.get_set_grp_links(index=0)
+    grp_link, is_private_message = await db.get_set_grp_links(index=0)
     if ispm:
         if 'hindi' in message.text.lower() or 'tamil' in message.text.lower() or 'telugu' in message.text.lower() or 'malayalam' in message.text.lower() or 'kannada' in message.text.lower() or 'english' in message.text.lower() or 'gujarati' in message.text.lower(): 
             return await auto_filter(client, message , pm_mode=True)
