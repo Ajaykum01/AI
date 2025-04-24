@@ -1,6 +1,6 @@
 from pyrogram import filters
 from pyrogram.types import Message
-from your_bot import app, db  # Adjust the import based on your project structure
+from app import app, db  # Adjust the import based on your project structure
 from config import ADMINS
 
 @app.on_message(filters.command("seturl") & filters.user(ADMINS))
