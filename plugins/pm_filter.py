@@ -1527,9 +1527,4 @@ async def advantage_spell_chok(message):
         await message.delete()
     except:
         pass
-
-config = await db.bot_config.find_one({"_id": "bot_config"})
-if config and config.get("shortener_url") and config.get("shortener_api"):
-    short_url = f"https://{config['shortener_url']}/api?api={config['shortener_api']}&url={file_url}"
-else:
-    short_url = gyanilinks.com
+	    
