@@ -2,7 +2,7 @@ from pyrogram import Client, filters
 from pyrogram.types import ChatPermissions
 
 # ---------- ADMIN FILTER ----------
-ADMINS = [123456789, 987654321]  # Replace with your Telegram user IDs
+ADMINS = [2117119246]  # Replace with your Telegram user IDs
 
 def is_admin():
     async def func(flt, client, message):
