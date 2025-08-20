@@ -1,6 +1,16 @@
 from pyrogram import Client, filters
 from pyrogram.types import ChatPermissions
-from helpers.filters import is_admin   # make sure you have this helper
+
+# ---------- ADMIN FILTER ----------
+ADMINS = [123456789, 987654321]  # Replace with your Telegram user IDs
+
+def is_admin():
+    async def func(flt, client, message):
+        if not message.from_user:
+            return False
+        return message.from_user.id in ADMINS
+    return filters.create(func)
+
 
 # ---------- SETLINK ----------
 @Client.on_message(filters.command("setlink") & is_admin())
@@ -77,10 +87,12 @@ async def unmute_handler(client, message):
         await client.restrict_chat_member(
             chat_id=message.chat.id,
             user_id=user_id,
-            permissions=ChatPermissions(can_send_messages=True,
-                                        can_send_media_messages=True,
-                                        can_send_other_messages=True,
-                                        can_add_web_page_previews=True)
+            permissions=ChatPermissions(
+                can_send_messages=True,
+                can_send_media_messages=True,
+                can_send_other_messages=True,
+                can_add_web_page_previews=True
+            )
         )
         await message.reply_text(f"🔊 Unmuted {user_id}", quote=True)
     except Exception as e:
